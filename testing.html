@@ -13,8 +13,12 @@ var myObj, myJSON, text, obj;
 myObj = {
     "name":"Augur",
     "description":"Prediction Market",
-    "update1":"test"
+    "updates": {
+        "u1":"Ford",
+        "u2":"BMW",
+        "u3":"Fiat"
     }
+}
 myJSON = JSON.stringify(myObj);
 localStorage.setItem("testJSON", myJSON);
 
@@ -29,8 +33,9 @@ document.getElementById("dapp_description").innerHTML = obj.description;
 
 text = localStorage.getItem("testJSON");
 obj = JSON.parse(text);
-document.getElementById("dapp_updates").innerHTML = myObj.update1
-
+for (x in myObj) {
+	document.getElementById("dapp_updates").innerHTML += obj.updates
+}
 </script>
 
 </body>
