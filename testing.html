@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3 id="dapp_name"></h3>
+
+<p id="dapp_description"></p>
+<ul id="dapp_updates"></ul>
+<script>
+var myObj, myJSON, text, obj;
+
+//This will be a different file
+myObj = {
+    "name":"Augur",
+    "description":"Prediction Market",
+    "update1":"test"
+    }
+myJSON = JSON.stringify(myObj);
+localStorage.setItem("testJSON", myJSON);
+
+//Insert into the html:
+text = localStorage.getItem("testJSON");
+obj = JSON.parse(text);
+document.getElementById("dapp_name").innerHTML = obj.name;
+
+text = localStorage.getItem("testJSON");
+obj = JSON.parse(text);
+document.getElementById("dapp_description").innerHTML = obj.description;
+
+text = localStorage.getItem("testJSON");
+obj = JSON.parse(text);
+document.getElementById("dapp_updates").innerHTML = myObj.update1
+
+</script>
+
+</body>
+</html>
