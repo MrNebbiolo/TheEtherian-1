@@ -7,35 +7,40 @@
 <p id="dapp_description"></p>
 <ul id="dapp_updates"></ul>
 <script>
-var myObj, myJSON, text, obj;
 
+var myObj, myJSON, text, obj;
 //This will be a different file
-myObj = {
+dappInfo = {
     "name":"Augur",
     "description":"Prediction Market",
-    "updates": {
-        "u1":"Ford",
-        "u2":"BMW",
-        "u3":"Fiat"
     }
-}
-myJSON = JSON.stringify(myObj);
+myJSON = JSON.stringify(dappInfo);
 localStorage.setItem("testJSON", myJSON);
 
 //Insert into the html:
 text = localStorage.getItem("testJSON");
 obj = JSON.parse(text);
-document.getElementById("dapp_name").innerHTML = obj.name;
-
+document.getElementById("dapp_name").innerHTML = dappInfo.name;
+//
 text = localStorage.getItem("testJSON");
 obj = JSON.parse(text);
 document.getElementById("dapp_description").innerHTML = obj.description;
-
-text = localStorage.getItem("testJSON");
-obj = JSON.parse(text);
-for (x in myObj) {
-	document.getElementById("dapp_updates").innerHTML += obj.updates
+//
+var myUpdates, i, x = "";
+myUpdates = {
+//INSTERT UPDATES HERE:
+    "updates":[ "This is update one.",
+    		  	"\"This update is a quote! But people will have to know how to do 						this..\"", 
+              	"http:\/\/somewebsite.com",
+              	"This is update four."
+           	  ]
+};
+for (i in myUpdates.updates) {
+    x += "-" + " " +  myUpdates.updates[i] + "<br>";
 }
+document.getElementById("dapp_updates").innerHTML = x;
+
+
 </script>
 
 </body>
